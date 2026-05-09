@@ -1,0 +1,22 @@
+// LC - 238 : https://leetcode.com/problems/product-of-array-except-self/
+
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n=nums.length;
+        int[] ans=new int[n];
+        int left=nums[0];
+        for(int i=0;i<n;i++){
+            ans[i]=1;
+        }
+        for(int i=1;i<n;i++){
+            ans[i]=left;
+            left *= nums[i];
+        }
+        int right=nums[n-1];
+        for(int i=n-2;i>=0;i--){
+            ans[i] *= right;
+            right *= nums[i];
+        }
+        return ans;
+    }
+}
